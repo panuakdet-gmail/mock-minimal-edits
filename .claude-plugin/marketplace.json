@@ -1,0 +1,31 @@
+{
+  "name": "minimal-edits-skills",
+  "id": "minimal-edits-skills",
+  "owner": {
+    "name": "Panuakdet Suwannatat"
+  },
+  "metadata": {
+    "description": "A Claude Code skill that ships a requested feature with the smallest correct change, and stops asking you questions that don't matter",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "minimal-edits",
+      "source": "./",
+      "description": "Build exactly what was asked at the simplest fidelity that satisfies it — no speculative config, no abstraction layers, no drive-by refactors — and guess the obvious answer instead of interrogating you",
+      "version": "1.0.0",
+      "author": {
+        "name": "Panuakdet Suwannatat"
+      },
+      "keywords": [
+        "minimal",
+        "simplicity",
+        "yagni",
+        "code-review",
+        "workflow",
+        "shipping"
+      ],
+      "category": "workflow"
+    }
+  ]
+}

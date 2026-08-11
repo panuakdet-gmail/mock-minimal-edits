@@ -1,0 +1,20 @@
+{
+  "name": "minimal-edits",
+  "description": "Ship a requested feature or fix with the smallest correct change to the existing codebase and the lowest chance of breaking anything. Biases hard against overengineering, and against interrogating you with questions it could have answered itself.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Panuakdet Suwannatat"
+  },
+  "license": "MIT",
+  "keywords": [
+    "minimal",
+    "simplicity",
+    "yagni",
+    "code-review",
+    "workflow",
+    "shipping"
+  ],
+  "skills": [
+    "./skills/mock-minimal-edits"
+  ]
+}
