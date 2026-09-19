@@ -43,38 +43,68 @@ That's the whole list. No other tools, no accounts, no configuration.
 
 ## Installing
 
+Options 1 to 3 are for Claude Code. Option 4 is for other agents such as Codex or Gemini CLI. Pick one.
+
 ### Option 1 — ask Claude Code to do it
 
-The easiest route, and it needs no terminal knowledge at all. Open Claude Code in any folder and paste this:
+This is the easiest way, and you do not need a terminal. Open Claude Code and paste this:
 
 ```
-Install the Claude Code skill from https://github.com/panuakdet-gmail/mock-minimal-edits
-by adding it as a plugin marketplace, then install the "minimal-edits" plugin from it.
+Please install the Claude Code skills from https://github.com/panuakdet-gmail/mock-minimal-edits.
+
+1. Download the repository, with its full history, to a temporary folder.
+2. For each folder inside its skills/ folder, look for a folder with the same name in ~/.claude/skills/.
+   - If there is none, copy the folder there.
+   - If there is one, and every file in it matches a version that was once published in this repository, replace it with the new version.
+   - If there is one, and it matches no published version, I have edited it. First move my copy to ~/.claude/skill-backups/<folder name>-<today's date>/. Then install the new version, show me what I had changed, and offer to merge my changes into it.
+3. Delete the temporary download and tell me what you installed or updated.
 ```
 
-Claude Code will ask your permission before it changes anything.
+Claude Code asks your permission before it changes anything. When it has finished, restart Claude Code.
 
-### Option 2 — the built-in commands
+**To update later**, paste the same prompt again. If you changed the skill yourself, your version is saved first, and Claude Code offers to merge your changes into the new one.
 
-Inside Claude Code, run these two:
+### Option 2 — install as a plugin
+
+Choose this if you want Claude Code to handle updates for you. Inside Claude Code, run:
 
 ```
 /plugin marketplace add panuakdet-gmail/mock-minimal-edits
 /plugin install minimal-edits@minimal-edits-skills
 ```
 
-The `plugin@marketplace` form is how Claude Code names a plugin: `minimal-edits` is the plugin, `minimal-edits-skills` is the collection it came from.
+To update later, run `/plugin marketplace update minimal-edits-skills`. Do not also use Option 1, otherwise the skill is installed twice.
 
-### Option 3 — by hand
+### Option 3 — copy the folder yourself
 
-Copy the skill folder into your personal skills directory:
+In a terminal:
 
 ```bash
 git clone https://github.com/panuakdet-gmail/mock-minimal-edits.git
+mkdir -p ~/.claude/skills
 cp -R mock-minimal-edits/skills/mock-minimal-edits ~/.claude/skills/
 ```
 
-Skills are read when a session starts, so restart Claude Code afterwards.
+Then restart Claude Code. To update, delete the downloaded `mock-minimal-edits` folder and run the same commands again. This replaces the installed folder, so any changes you made to it are lost.
+
+### Option 4 — ask another agent to do it
+
+Open Codex, Antigravity, Gemini CLI, or whatever agent you use, and paste this:
+
+```
+Please install the skills from https://github.com/panuakdet-gmail/mock-minimal-edits for this agent.
+
+1. Download the repository, with its full history, to a temporary folder.
+2. Each folder inside its skills/ folder is one skill. Install each folder whole, including subfolders such as assets/, because the instructions use those files.
+3. The skills were written for Claude Code, so adapt only the packaging: register each one the way this agent handles reusable skills or commands, so I can run it by name. Do not change the instructions inside each SKILL.md.
+4. Before you install each skill, check whether I already have it.
+   - If I do not, install it.
+   - If I do, and its files match a version that was once published in this repository, replace it with the new version. Ignore packaging changes that an agent made when it installed the skill.
+   - If I do, and it matches no published version, I have edited it. First copy my version to a backup folder outside the place this agent loads skills from, and tell me where it is. Then install the new version, show me what I had changed, and offer to merge my changes into it.
+5. Delete the temporary download. Then tell me what you installed or updated, and how to run each skill here.
+```
+
+**To update later**, paste the same prompt again.
 
 ## Using it
 
